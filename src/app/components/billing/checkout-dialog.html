@@ -1,0 +1,5 @@
+<h2 mat-dialog-title class="text-muted text-center m-5" style="font-size: 60px;">Confirm Checkout This Item <mat-icon style="font-size: 60px;">delete</mat-icon> </h2>
+<mat-dialog-actions align="end" class="justify-content-between">
+  <button mat-raised-button mat-dialog-close color="warn">Cancel</button>
+  <button mat-flat-button color="accent" [mat-dialog-close]="true" cdkFocusInitial>Checkout</button>
+</mat-dialog-actions>

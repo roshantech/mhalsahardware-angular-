@@ -1,0 +1,93 @@
+<div class="container text-muted mt-5">
+  <h1 style="font-size:3em">Billing Portal</h1>
+</div>
+
+<div class="container justify-content-between">
+
+  
+    <mat-card class="mt-5 text-center justify-content-center" >
+      <mat-card-header class="text-muted">Add Item to Cart</mat-card-header>
+        
+         
+        
+        
+        
+        <form class="mt-5"  #f="ngForm">
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Items</mat-label>
+                <input type="text"
+                      
+                       placeholder="Pick one"
+                       aria-label="Number"
+                       matInput
+                       [formControl]="myControl"
+                       [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                    {{option}}
+                  </mat-option>
+                </mat-autocomplete> 
+              </mat-form-field>
+              <ng-template #name ngFor let-card [ngForOf]="Item | async" let-i="index">
+                <input type="text" *ngIf="i  === 0" style="display: none" [ngModel]="card.id" name="id" required>
+                <input type="text" *ngIf="i  === 0" style="display: none" [ngModel]="card.Description" name="Description" required>
+              <mat-form-field class="example-full-width" floatLabel="always" appearance="fill" *ngIf="i  === 0" >
+                <mat-label>A/U</mat-label>
+                <input matInput type="text" name="AU"  [(ngModel)]="card.AU" required [placeholder]="card.AU">
+            </mat-form-field>
+            <mat-form-field class="example-full-width" floatLabel="always" appearance="fill" *ngIf="i  === 0">
+                <mat-label>Quantity</mat-label>
+                <input matInput type="number" name="Quantity" [placeholder]="card.Quantity"  [ngModel]="card.Quantity" required>
+            </mat-form-field>
+            <mat-form-field appearance="fill" floatLabel="always" *ngIf="i  === 0">
+                <mat-label>Amount</mat-label>
+                <input matInput type="number" name="Amount" class="example-right-align"   [placeholder]="card.Amount" [(ngModel)]="card.Amount" required>
+                <span matPrefix> <mat-icon>attach_money</mat-icon> &nbsp;</span>
+                <span matSuffix>.00</span>
+              </mat-form-field>
+            <mat-form-field class="example-full-width" floatLabel="always" appearance="fill" *ngIf="i  === 0">
+                <mat-label>Price</mat-label>
+                <input matInput type="number" name="SPrice"   [placeholder]="card.SPrice" [(ngModel)]="card.SPrice" required>
+            </mat-form-field>
+           
+          </ng-template>
+            <button mat-raised-button color="accent" class="btn "type="button" (click)="addCheckout(f)" >Add To Checkout <mat-icon>receipt_long</mat-icon> </button>
+        </form>
+      
+    </mat-card>
+    <mat-card class="mt-5 text-center justify-content-center">
+      <mat-card-header class="text-muted">Checkout</mat-card-header>
+      
+
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Description</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">SPrice</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <ng-template #name ngFor let-card [ngForOf]=" dataSource" let-i="index">
+          
+          <tbody>
+          <td> - </td> 
+          <td> {{card.Description}} </td>     
+          <td> {{card.Quantity}} </td>
+          <td> {{card.SPrice}} </td>
+          <td> <button mat-button color="warn" (click)="delItem(card.id)"><mat-icon>delete</mat-icon></button></td>
+          </tbody>
+      </ng-template>
+
+      
+      </table>
+      
+      
+      
+      <button mat-raised-button color="primary" class="btn mt-5 justify-content-between " (click)="openDialog()" > <span>Checkout </span>  <mat-icon>add_shopping_cart</mat-icon> </button>
+
+    </mat-card>
+   
+</div>

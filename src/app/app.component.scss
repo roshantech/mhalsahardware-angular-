@@ -1,0 +1,41 @@
+.navbar{
+    justify-content:between;
+}
+a{
+    display:flex;
+    justify-content:between;
+}
+button{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size:10px;
+    color:whitesmoke;
+}
+span{ margin: 1em;}
+
+mat-sidenav-container{
+    height: 100%;
+}
+mat-sidenav{ 
+    background-color:#23243d;
+    width:300px;
+    transition: width .5s ease-in-out;
+    .mat-list-item {
+        color: rgba(255, 255, 255, 0.87);
+    }
+    
+}
+@media only screen and (max-width: 600px) {
+    mat-sidenav{ 
+        width:100%;
+    }
+  }
+
+mat-icon{
+    
+}
+
+.my-class{
+    width: 200px!important;
+    min-width: unset!important;
+}
+

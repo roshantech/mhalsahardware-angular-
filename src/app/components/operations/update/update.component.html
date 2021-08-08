@@ -1,0 +1,41 @@
+<div class="container">
+
+    <mat-card >
+        <mat-card-header class="text-center text-muted">Update</mat-card-header>
+        <mat-card-content >
+            <form (submit)="$event.preventDefault()"  #f="ngForm"  *ngFor="let a of item">
+                <mat-form-field class="example-full-width" floatLabel="always" appearance="fill">
+                    <mat-label>Description</mat-label>
+                    <input matInput name="Description"  [placeholder]="a.Description" ngModel required>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" floatLabel="always" appearance="fill">
+                    <mat-label>A/U</mat-label>
+                    <input matInput type="text" name="AU" [placeholder]="a.AU" ngModel required>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" floatLabel="always" appearance="fill">
+                    <mat-label>Quantity</mat-label>
+                    <input matInput type="number" name="Quantity" [placeholder]="a.Quantity" ngModel required>
+                </mat-form-field>
+                <mat-form-field appearance="fill" floatLabel="always">
+                    <mat-label>Amount</mat-label>
+                    <input matInput type="number" name="Amount" class="example-right-align" [placeholder]="a.Amount" ngModel required>
+                    <span matPrefix> <mat-icon>attach_money</mat-icon> &nbsp;</span>
+                    <span matSuffix>.00</span>
+                  </mat-form-field>
+                <mat-form-field class="example-full-width" floatLabel="always" appearance="fill">
+                    <mat-label>P/Price</mat-label>
+                    <input matInput type="number" name="PPrice" [placeholder]="a.PPrice" ngModel required>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" floatLabel="always" appearance="fill">
+                    <mat-label>S/Price</mat-label>
+                    <input matInput type="number" name="SPrice" [placeholder]="a.SPrice" ngModel required>
+                </mat-form-field>
+    
+                <button mat-button color="primary"  (click)="openDialog(f)">Update <mat-icon>update</mat-icon> </button>
+    
+    
+            </form>
+        </mat-card-content>
+    </mat-card>
+
+</div>

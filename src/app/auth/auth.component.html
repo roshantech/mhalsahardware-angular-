@@ -1,0 +1,76 @@
+<div class="container">
+
+    <mat-tab-group mat-align-tabs="center">
+        <mat-tab label="Login">
+            <mat-card>
+                <mat-card-header><span class="text-muted">Login</span> </mat-card-header>
+                <mat-card-content>
+                    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" >
+                        
+                            <mat-form-field appearance="outline">
+                              <mat-label>Enter your email</mat-label>
+                              <input matInput placeholder="pat@example.com" name="email" type="email" email ngModel required>
+                              <mat-error ></mat-error>
+                            </mat-form-field>
+                            
+                            <mat-form-field appearance="outline">
+                                <mat-label>Enter your password</mat-label>
+                                <input matInput [type]="hide ? 'password' : 'text'" ngModel  name="password" type="password" required minlength="6">
+                                <button mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'"  [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                            </mat-form-field>
+                            <button mat-flat-button [disabled]="!authForm.valid"  color="primary">Login <mat-icon>login</mat-icon> </button>
+                          
+                          
+                    </form>
+                </mat-card-content>
+            </mat-card>
+    
+    
+    
+        </mat-tab>
+        <mat-tab label="Signup">
+            <mat-card>
+                <mat-card-header><span class="text-muted">Signup</span> </mat-card-header>
+                <mat-card-content>
+                    <form>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Enter your Name</mat-label>
+                            <input matInput placeholder="pat@example.com" name="name" type="text" ngModel required>
+                            <mat-error ></mat-error>
+                          </mat-form-field>
+
+                            <mat-form-field appearance="outline">
+                              <mat-label>Enter your email</mat-label>
+                              <input matInput placeholder="pat@example.com" name="email" type="email" ngModel required>
+                              <mat-error ></mat-error>
+                            </mat-form-field>
+                            
+                            <mat-form-field appearance="outline">
+                                <mat-label>Enter your password</mat-label>
+                                <input matInput [type]="hide ? 'password' : 'text'">
+                                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Confirm password</mat-label>
+                                <input matInput [type]="hide ? 'password' : 'text'">
+                                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                            </mat-form-field>
+                            <button mat-flat-button color="primary">Signup <mat-icon>register</mat-icon> </button>
+                          
+                          
+                    </form>
+                </mat-card-content>
+            </mat-card>
+    
+    
+    
+        </mat-tab>   
+      </mat-tab-group>
+      
+</div>

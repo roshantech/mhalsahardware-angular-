@@ -1,0 +1,15 @@
+.container{
+    max-width:97%
+}
+.car{
+    display:grid;
+    grid-template-columns: repeat(2 , 1fr);
+    align-items: stretch;
+}
+.contactinfo{
+    height: 100px;
+    grid-column: 1/2;
+}
+.call{
+    height: 100px;
+}

@@ -1,0 +1,28 @@
+mat-tab-group{
+    top: 50px;
+    width: 100%;
+}
+mat-card-header{
+    
+    span{
+        text-align: center;
+    
+        font-size: 30px;
+        }
+    
+
+}
+mat-card-content{
+    
+    display: flex;
+    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    flex-direction: column;
+    button{ 
+        width: 100%;
+    }
+}
+mat-form-field{
+    width: 100%;
+}

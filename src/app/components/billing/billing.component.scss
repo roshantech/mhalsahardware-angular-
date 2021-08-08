@@ -1,0 +1,51 @@
+.container{
+    max-width: 90%;
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction:row;  
+     
+}
+
+
+mat-card{
+    width: 49%;
+    padding-bottom: 50px;
+    mat-card-header{
+        font-size:30px;
+    }
+    mat-list-item {
+        width: 100%;
+    }
+    mat-form-field{
+        width: 100%;
+    }
+    table{ 
+        width: 100%;
+        margin-top: 50px;
+    }
+    .btn{
+        width: 100%;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+    .container{
+        display:flex;
+        flex-wrap: wrap;
+        flex-direction:column;     
+    }
+    mat-card{
+        width: 100%;
+        mat-card-header{
+            font-size:30px;
+        }
+        mat-form-field{
+            width: 100%;
+        }
+    
+    }
+  }

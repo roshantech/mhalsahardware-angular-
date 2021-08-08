@@ -1,0 +1,11 @@
+mat-toolbar{
+    position:relative;
+    top:0;
+    .icon{
+        display:none;
+    }
+}
+mat-list{
+    position:absolute;
+    right: 10px;
+}

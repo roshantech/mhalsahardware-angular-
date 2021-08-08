@@ -1,0 +1,54 @@
+.container{
+    max-width: 93%;
+    
+}
+h1{
+    font-size:inherit
+}
+mat-form-field{
+    width: 100%;
+    box-shadow: 50px;
+    
+}
+
+.grid-container{
+    display:grid;
+    grid-template-columns: repeat(2 , 1fr );
+    grid-gap:2em ;
+    grid-auto-rows: minmax(100px , auto);
+    
+}
+
+
+.mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button {
+    border-radius:none !important;
+}
+mat-card {
+    width: 100%;
+    border-radius: 0%;
+    margin-right:10px ;
+}
+
+@media screen and (max-width:700px){
+    .n{
+        display:none;
+    }
+}
+
+  
+
+  h1{
+      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: clamp(1rem, 10vw, 2rem); 
+  }  
+  mat-card-content{
+      font-size: 30px;
+      margin-top: 20px;
+      mat-icon{
+          position: absolute;
+          right: 100px;
+          color: grey;
+          top: 20px;
+        font-size: 70px;
+      }
+  }
