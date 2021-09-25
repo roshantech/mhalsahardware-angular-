@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-invoice',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InvoiceComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private _Activatedroute:ActivatedRoute,private router: Router) {
+    const navigation = this.router.getCurrentNavigation();
+    const state = navigation.extras.state;
   }
 
+  now = new Date();
+  data=this._Activatedroute.snapshot.paramMap.get("data");
+  
+  ngOnInit(){
+  }
 }

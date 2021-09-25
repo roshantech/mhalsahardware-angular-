@@ -20,9 +20,10 @@ import { AuthInterceptorService } from './auth/auth-interceptor.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InvoiceComponent } from './components/invoice/invoice.component';
 import {NgxPrintModule} from 'ngx-print';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DashboardComponent, ItemInfoDialog } from './components/dashboard/dashboard.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { MasterContactComponent } from './components/masters/master-contact/master-contact.component';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { MasterContactComponent } from './components/masters/master-contact/mast
     InvoiceComponent,
     DashboardComponent,
     ContactusComponent,
-    MasterContactComponent
+    MasterContactComponent,
+    ItemInfoDialog
     
   ],
   imports: [
@@ -52,7 +54,8 @@ import { MasterContactComponent } from './components/masters/master-contact/mast
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxPrintModule
+    NgxPrintModule,
+    StoreModule.forRoot({}, {})
   ],
   providers: [ItemsService,{provide: HTTP_INTERCEPTORS , useClass: AuthInterceptorService,multi: true}],
   bootstrap: [AppComponent]

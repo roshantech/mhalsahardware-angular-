@@ -5,18 +5,18 @@
         <a mat-list-item href="" routerLink="" class="d-flex justify-content-between mt-3" ><button mat-button><h1>Mhalsa Hardwares</h1> </button>
           </a>
         <mat-divider class="mt-3"></mat-divider>
-        <a mat-list-item href="" routerLink="" [routerLinkActive] *ngIf="isAuthenticated" ><mat-icon>dashboard</mat-icon> <span>Dashboard</span>  </a>
+        <a mat-list-item href="" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngIf="isAuthenticated" ><mat-icon>dashboard</mat-icon> <span>Dashboard</span>  </a>
         <mat-divider></mat-divider>
       
-          <a mat-list-item href="" routerLink="itemMaster" [routerLinkActive] *ngIf="isAuthenticated"><mat-icon>assignment</mat-icon><span>Item Master</span>  </a>
+          <a mat-list-item href="" routerLink="itemMaster" routerLinkActive="active" *ngIf="isAuthenticated"><mat-icon>assignment</mat-icon><span>Item Master</span>  </a>
           <mat-divider></mat-divider>
-          <a mat-list-item href="" routerLink="/billing"  *ngIf="isAuthenticated"><mat-icon>receipt_long</mat-icon><span>Billing</span>  </a>
+          <a mat-list-item href="" routerLink="/billing"  routerLinkActive="active" *ngIf="isAuthenticated"><mat-icon>receipt_long</mat-icon><span>Billing</span>  </a>
           <mat-divider></mat-divider>
-          <a mat-list-item href="" routerLink="/auth" [routerLinkActive] *ngIf="!isAuthenticated"><mat-icon>login</mat-icon><span>Login</span>  </a>
+          <a mat-list-item href="" routerLink="/auth" routerLinkActive="active" *ngIf="!isAuthenticated"><mat-icon>login</mat-icon><span>Login</span>  </a>
           <mat-divider></mat-divider>
-          <a mat-list-item href="" routerLink="/mastercontact"><mat-icon>contacts</mat-icon> <span>Master Contact</span>  </a>
+          <a mat-list-item href="" routerLink="/mastercontact" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"  ><mat-icon>contacts</mat-icon> <span>Master Contact</span>  </a>
           <mat-divider></mat-divider>
-          <a mat-list-item href="" routerLink="/contactus"><mat-icon>phone</mat-icon> <span>Contact US</span>  </a>
+          <a mat-list-item href="" routerLink="/contactus" routerLinkActive="active"><mat-icon>phone</mat-icon> <span>Contact US</span>  </a>
 
           <span class="bottom text-muted">© 2021 Codering LLC</span>
       </mat-nav-list>

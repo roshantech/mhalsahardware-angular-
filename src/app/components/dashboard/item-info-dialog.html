@@ -1,0 +1,41 @@
+<h1 mat-dialog-title>{{data.name}} <br> <span style="font-size: 0.5em;">{{data.tagline}}</span> </h1>
+<div mat-dialog-content>
+  <div class="grid-container">
+    <div class="image">
+      <img [src]="data.image_url" alt="">
+    </div>
+    <div class="content">
+        <span class="text-center text-muted">Created By:{{data.contributed_by}} <br> </span>
+        <span class="text-center text-muted">First Brewed On:{{data.first_brewed}} <br> </span>  
+        <span class="text-muted">Ingridients:-</span>
+        <table class="table mt-5">
+          <thead> 
+              <th>Malt Ingridients</th>
+              <th>Amount</th>
+          </thead>
+          <tbody  *ngFor="let ing of data.ingredients.malt">
+                <td> {{ing.name}}</td>
+              <td>  {{ing.amount.value}}</td>
+          </tbody>
+        </table>
+        <table class="table">
+          <thead> 
+              <th>Hops Ingridients</th>
+              <th>Amount</th>
+          </thead>
+          <tbody  *ngFor="let ing of data.ingredients.hops">
+                <td> {{ing.name}}</td>
+              <td>  {{ing.amount.value}}</td>
+          </tbody>
+        </table>
+        <div class="mt-5 text-center text-muted">
+          <h2>Description:-</h2>
+          {{data.description}}
+        </div>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions class="d-flex justify-content-end">
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="" cdkFocusInitial>Buy</button>
+</div>

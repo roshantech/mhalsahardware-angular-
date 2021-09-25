@@ -15,7 +15,6 @@ const routes: Routes = [
     path: 'itemMaster',
     component: ItemMasterComponent,
     children: [
-
     ]
   },
   {
@@ -23,7 +22,7 @@ const routes: Routes = [
     component: UpdateComponent,
   },
   {
-    path: 'additem',
+    path: 'itemMaster/additem',
     component: AddItemComponent,
   },
   {
@@ -33,11 +32,15 @@ const routes: Routes = [
   {
     path: 'billing',
     component: BillingComponent,
+    children: [
+    ]
   },
   {
-    path: 'invoice/:id',
+    path: 'invoice',
     component: InvoiceComponent,
+    data:{}
   },
+
   {
     path: '',
     component: DashboardComponent,

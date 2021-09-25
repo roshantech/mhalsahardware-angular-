@@ -25,7 +25,7 @@ if (result == true) {
 console.log(form.value);
 this.itemservice.addItem(form.value).subscribe(res => {
 console.log(res);
-this.router.navigate(['']);
+this.router.navigate(['itemMaster']);
 });
 }
 });

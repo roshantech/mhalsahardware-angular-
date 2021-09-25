@@ -1,0 +1,12 @@
+.grid-container{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.content{
+    span{
+        font-size:2em;
+        font-family: 'Courier New', Courier, monospace;
+       
+    }
+}

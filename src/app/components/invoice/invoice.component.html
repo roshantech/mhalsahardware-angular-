@@ -1,21 +1,43 @@
-<button mat-button printTitle="Invoice"   printSectionId="print-section" [useExistingCss]="true"  ngxPrint>Print <mat-icon>print</mat-icon> </button>
-
+<div class="container mt-5 text-muted">
+    <h1 style="font-size:3em">Invoice</h1>
+</div>
 <div class="container" id="print-section">
-    <mat-card  class="text-center text-muted">
-        <mat-card-header>Hello</mat-card-header>
+    <mat-card  class="text-center text-muted mt-5">
+        <div class="header">
+            <h1><mat-icon>public</mat-icon>Mhalsa Hardware and Electricals</h1> <span class="justify-content-end">{{now}}</span>
+        </div>
+        <div class="address">
+            <h2> Sonori Road, saswad Plot No.72-A, Opposite to Krushnai Developers,<br> beside Venkatesh, Swapna Nagari, Pune, Maharashtra 412301 <br>  Contact no:<span>8602980482,9822066926</span> <br> Email:<span>roshanbhagat23april@gmail.com</span></h2>
+        </div>
+        <div class="contact">
+            <h2></h2>
+            
+        </div>
+
         <table class="table">
             <thead>
                 <th scope="col">#</th>
-                <th scope="col">Description</th>
+                <th scope="col">Nomenclature</th>
+                <th scope="col">A/U</th>
                 <th scope="col">Quantity</th>
-                <th scope="col">SPrice</th>
+                <th scope="col">Rate</th>
+                <th scope="col">Amount</th>
                 
             </thead>
             <tbody>
-                
+                <td>{{data}}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
                 
             </tbody>
             
         </table>
+        <div class="clear d-flex justify-content-end">Total : - {{250}} rs</div>
+        <div class="footer d-flex justify-content-end"><button mat-raised-button color="primary" printTitle="Invoice"   printSectionId="print-section" [useExistingCss]="true"  ngxPrint>Print <mat-icon>print</mat-icon> </button>
+        </div>
     </mat-card>
+    
 </div>

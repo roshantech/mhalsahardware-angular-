@@ -63,7 +63,7 @@ export class ItemMasterComponent implements  OnInit{
         console.log(id);
         this.itemservice.deleteById(id).subscribe(res => {
           console.log(res);
-          this.router.navigate(['']);
+          this.router.navigate(['itemMaster']);
         });
       }
     });

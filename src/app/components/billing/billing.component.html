@@ -1,22 +1,14 @@
 <div class="container text-muted mt-5">
   <h1 style="font-size:3em">Billing Portal</h1>
 </div>
-
 <div class="container justify-content-between">
-
-  
-    <mat-card class="mt-5 text-center justify-content-center" >
+    <mat-card class="mt-5 text-center justify-content-center">
       <mat-card-header class="text-muted">Add Item to Cart</mat-card-header>
-        
-         
-        
-        
-        
+
         <form class="mt-5"  #f="ngForm">
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Items</mat-label>
                 <input type="text"
-                      
                        placeholder="Pick one"
                        aria-label="Number"
                        matInput
@@ -26,7 +18,7 @@
                   <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                     {{option}}
                   </mat-option>
-                </mat-autocomplete> 
+                </mat-autocomplete>
               </mat-form-field>
               <ng-template #name ngFor let-card [ngForOf]="Item | async" let-i="index">
                 <input type="text" *ngIf="i  === 0" style="display: none" [ngModel]="card.id" name="id" required>
@@ -49,15 +41,15 @@
                 <mat-label>Price</mat-label>
                 <input matInput type="number" name="SPrice"   [placeholder]="card.SPrice" [(ngModel)]="card.SPrice" required>
             </mat-form-field>
-           
+
           </ng-template>
             <button mat-raised-button color="accent" class="btn "type="button" (click)="addCheckout(f)" >Add To Checkout <mat-icon>receipt_long</mat-icon> </button>
         </form>
-      
+
     </mat-card>
     <mat-card class="mt-5 text-center justify-content-center">
       <mat-card-header class="text-muted">Checkout</mat-card-header>
-      
+
 
 
       <table class="table">
@@ -71,23 +63,23 @@
           </tr>
         </thead>
         <ng-template #name ngFor let-card [ngForOf]=" dataSource" let-i="index">
-          
+
           <tbody>
-          <td> - </td> 
-          <td> {{card.Description}} </td>     
+          <td> - </td>
+          <td> {{card.Description}} </td>
           <td> {{card.Quantity}} </td>
           <td> {{card.SPrice}} </td>
           <td> <button mat-button color="warn" (click)="delItem(card.id)"><mat-icon>delete</mat-icon></button></td>
           </tbody>
       </ng-template>
 
-      
+
       </table>
-      
-      
-      
+
+
+
       <button mat-raised-button color="primary" class="btn mt-5 justify-content-between " (click)="openDialog()" > <span>Checkout </span>  <mat-icon>add_shopping_cart</mat-icon> </button>
 
     </mat-card>
-   
+
 </div>

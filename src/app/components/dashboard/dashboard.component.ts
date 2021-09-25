@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { BearService } from './bear.service';
 
 
 export interface User {
   name: string;
 }
 
+let DATA:any = [];
 
 @Component({
   selector: 'app-dashboard',
@@ -16,30 +19,77 @@ export interface User {
 })
 export class DashboardComponent implements OnInit {
 
+  bearData:Observable<any>;
+
   myControl = new FormControl();
-  options: User[] = [
-    {name: 'Mary'},
-    {name: 'Shelley'},
-    {name: 'Igor'}
+  options: any[] = [
+   
   ];
   filteredOptions: Observable<User[]>;
 
+  constructor(private bearService:BearService,public dialog: MatDialog){}
+
   ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges
+
+    this.bearService.getAllBears().subscribe(res => {
+      console.log(res);
+      DATA = res;
+      this.options = res.map(res => {
+        return { name:res.name}
+      });
+      console.log(this.options);
+
+    })
+
+    this.bearData = this.myControl.valueChanges
       .pipe(
         startWith(''),
-        map(value => typeof value === 'string' ? value : value.name),
-        map(name => name ? this._filter(name) : this.options.slice())
+        map(value => this._value(value))
       );
+
+
+    
   }
 
-  displayFn(user: User): string {
-    return user && user.name ? user.name : '';
+
+  openDialog(data:any): void {
+    const dialogRef = this.dialog.open(ItemInfoDialog, {
+      width: '1080px',
+      data: data
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      
+    });
   }
 
-  private _filter(name: string): User[] {
-    const filterValue = name.toLowerCase();
+  private _value(value){
+    const filterValue = value;
 
-    return this.options.filter(option => option.name.toLowerCase().includes(filterValue));
+    return DATA.filter(data => data.name.includes(filterValue));
   }
+
+
+
+
+
+}
+
+@Component({
+  selector: 'item-info-dialog',
+  templateUrl: 'item-info-dialog.html',
+  styleUrls: ['style.scss']
+
+})
+export class ItemInfoDialog {
+
+  constructor(
+    public dialogRef: MatDialogRef<ItemInfoDialog>,
+    @Inject(MAT_DIALOG_DATA) public data) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
 }

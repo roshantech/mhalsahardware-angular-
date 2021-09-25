@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { fromEvent, interval ,Observable,Subject,Subscription} from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { ItemsService } from 'src/app/items.service';
@@ -16,10 +16,10 @@ export interface Item {
 }
 
 let ELEMENT_DATA:any = [
- 
+
 ];
 let Added_data:Item[]= [
- 
+
 ];
 @Component({
   selector: 'app-dashboard',
@@ -34,7 +34,7 @@ export class BillingComponent implements OnInit {
   options: any = [];
   filteredOptions: Observable<string[]>;
   Item:Observable<any>;
-  dataSource:Item[] =[];
+  dataSource:any =[];
 
   delItem(id){
     this.dataSource = this.dataSource.filter(item => item.id !==id);
@@ -49,18 +49,19 @@ export class BillingComponent implements OnInit {
     this.Item = this.myControl.valueChanges
       .pipe(
         startWith(''),
-        map(value => this._value(value))
-      );
-
+        map(value => {
+          this._value(value)
+          console.log(value)
+      }));
       setInterval(() => {
         this.itemService.getAllItems().subscribe(res => {
           ELEMENT_DATA = res;
           this.options = res.map(value => value.Description);
-      
+
           })
       },5000)
 
-    
+
 
     this.filteredOptions = this.myControl.valueChanges
       .pipe(
@@ -76,7 +77,6 @@ export class BillingComponent implements OnInit {
   }
   private _value(value){
     const filterValue = value;
-
     return ELEMENT_DATA.filter(data => data.Description.includes(filterValue));
   }
 
@@ -88,7 +88,7 @@ export class BillingComponent implements OnInit {
 
   openDialog(){
     const dialogRef = this.dialog.open(CheckoutDialog);
-
+    const navigationextras:NavigationExtras = this.dataSource;
     dialogRef.afterClosed().subscribe(result => {
       if (result == true) {
         this.dataSource.forEach(item => {
@@ -97,10 +97,11 @@ export class BillingComponent implements OnInit {
           console.log(body,Quantity,Quantity[0].Quantity,item.Quantity);
           this.itemService.updateById(item.id,{Quantity:body}).subscribe(res => {
             console.log(res);
-            
           });
         });
-        
+        this.router.navigate(['/invoice'],navigationextras);
+
+
       }
     });
 
